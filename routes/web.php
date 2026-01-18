@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\LogoutController;
+use App\Livewire\AdminLogin;
+use App\Livewire\UserLogin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,3 +40,11 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+//admin login route
+Route::get('/admin/login', AdminLogin::class)->name('admin.login');
+
+//user login route
+Route::get('/login', UserLogin::class)->name('user.login');
+
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
